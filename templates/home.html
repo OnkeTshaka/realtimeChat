@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{% static 'style.css' %}" rel="stylesheet">
+  <title>Group Chat</title>
+  <style>
+    input[type=text],
+    select {
+      width: 80%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type=submit] {
+      width: 80%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+
+  <body>
+    <header id="header" class="fixed-top">
+      <div class="container d-flex align-items-center">
+
+        <h1 class="logo me-auto"><a href="/" style="margin-left: 500px;"><span>Group</span>chat</a></h1>
+      </div>
+    </header><!-- End Header -->
+    <div align="center">
+
+    </div>
+
+
+    <div class="container" style="margin-top: 50px;margin-left: 110px;">
+
+      <form id="post-form" method="POST" action="checkview">
+        {% csrf_token %}
+        <div class="form-group">
+          <label>Room Name</label>
+          <div class="col-md-10">
+            <input type="text" name="room_name" id="room_name" width="100px" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Username</label>
+          <div class="col-md-10">
+            <input type="text" name="username" id="username" width="100px" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-10">
+            <input type="submit" value="Enter Room">
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+
+  </body>
+
+
+</html>
