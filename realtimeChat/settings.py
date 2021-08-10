@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-j^0@aw*2l$0ua8yj2!ob2@e&9+he-l#9&5u(4-t&nz5!#zu8bs
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['chat-za.herokuapp.com']
 
 
 # Application definition
@@ -77,8 +79,14 @@ WSGI_APPLICATION = 'realtimeChat.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'df0srg4p0fc1kv',
+        'USER': 'fwrrjnoyruewlo',
+        'PASSWORD':'619d70ba7cb8748cfd723178c7a9c76de8096c19751c86fe33789de2b255963c',
+        'HOST':'ec2-52-6-211-59.compute-1.amazonaws.com',
+        'PORT':'5432'
     }
 }
 
@@ -118,11 +126,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles')
 STATIC_URL = '/static/'
-STATICFILES_DIRS =[
-          BASE_DIR / 'static',
-]
+django_heroku.settings(locals())
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
